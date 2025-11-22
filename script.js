@@ -21,6 +21,15 @@ function gridCreator(size){
     }
 }
 
+const button = document.querySelector(".buttonClick")
+button.addEventListener("click", function(){
+
+    const userInput = prompt("Enter a Number from 1-100")
+    reset()
+    gridCreator(userInput)
+    hoverListener()
+})
+
 function randomColor(){
     number1 = Math.floor(Math.random() * 255);
     number2 = Math.floor(Math.random() * 255);
