@@ -1,21 +1,24 @@
-function gridCreator(width, height){
+function gridCreator(size){
     const container = document.querySelector(".container")
-    for (let i = 0; i < height; i++){
-        const divContainer = document.createElement('div')
-        const newDiv = document.createElement('div');
-        newDiv.style.cssText = "border: 1px solid black; margin: 0; padding: 24px";
-        divContainer.appendChild(newDiv);
-        container.appendChild(divContainer);
-        
-        for (let j = 0; j < width-1; j++){
-            const newDiv = document.createElement('div');
-            newDiv.style.cssText = "border: 1px solid black; margin: 0; padding: 24px";
-            divContainer.appendChild(newDiv);
-            newDiv.classList.add(".hover")
-        }
-        newDiv.classList.add(".hover")
-        divContainer.style.cssText = "display: flex; justify-content: center;";
-    }
+    container.style.cssText = "display: flex; flex-direction: column; width: 800px; height: 800px; margin: auto"
+    totalBoxes = size * size
+    
+    let row;
 
+    for (let i = 0; i < totalBoxes; i++){
+        if (i % size == 0){
+            row = document.createElement('div');
+            row.classList.add("row")
+            row.style.cssText = "display: flex; flex: 1";
+            container.appendChild(row);
+        }
+        const newDiv = document.createElement('div');
+        newDiv.style.cssText = "border: 2px solid black; margin: 0; flex: 1;"
+        newDiv.classList.add("hover")
+        newDiv.darkness = 0.10;
+        row.appendChild(newDiv);
+
+    }
 }
-gridCreator(16, 16)
+
+
