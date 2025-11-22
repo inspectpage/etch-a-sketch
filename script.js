@@ -21,4 +21,34 @@ function gridCreator(size){
     }
 }
 
+function randomColor(){
+    number1 = Math.floor(Math.random() * 255);
+    number2 = Math.floor(Math.random() * 255);
+    number3 = Math.floor(Math.random() * 255);
+    let random = `rgb(${number1},${number2},${number3}, ${this.darkness})`;
+    this.darkness += 0.10;
+    this.style.backgroundColor = random;
+}
+// function resetColor(){
+//     this.style.backgroundColor = "white";
+// }
+
+function reset(){
+    const container = document.querySelector(".container")
+    const rows = document.querySelectorAll(".row")
+    rows.forEach(row =>{
+        container.removeChild(row)
+    })
+}
+
+function hoverListener(){
+    const targets = document.querySelectorAll(".hover");
+    targets.forEach(div => {
+        div.addEventListener("mouseenter", randomColor)
+        // div.addEventListener("mouseleave", resetColor)
+    });
+}
+
+gridCreator(16)
+hoverListener()
 
